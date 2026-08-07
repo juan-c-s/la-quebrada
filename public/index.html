@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Quebrada · Cerveceria Artesanal</title>
+<meta name="description" content="Cerveza artesanal de Medellín, cocinada en lotes pequeños. Pide por WhatsApp — lleva 4 botellas, mezcladas como quieras, y pagas precio de 4-pack.">
+
+<!-- Open Graph — el enlace solo se comparte por WhatsApp, así que la vista previa importa -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="La Quebrada">
+<meta property="og:title" content="La Quebrada · Cerveceria Artesanal">
+<meta property="og:description" content="Cerveza artesanal de Medellín, cocinada en lotes pequeños. Pide por WhatsApp — lleva 4 botellas, mezcladas como quieras, y pagas precio de 4-pack.">
+<meta property="og:image" content="https://laquebrada.pages.dev/images/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://laquebrada.pages.dev/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="river-bg" aria-hidden="true">
+  <svg viewBox="0 0 1200 900" preserveAspectRatio="none">
+    <path d="M180,-50 C420,180 60,380 300,560 C520,720 260,860 360,960 L640,960 C540,840 800,700 600,540 C420,400 700,200 520,-50 Z" fill="#A9C4F7" opacity=".55"/>
+    <path d="M420,-50 C660,190 300,390 540,570 C760,730 500,870 600,960 L900,960 C800,840 1060,690 860,530 C680,390 960,190 780,-50 Z" fill="#7FA6F0" opacity=".5"/>
+  </svg>
+</div>
+
+<header>
+  <div class="script logo">La Quebrada</div>
+  <div class="logo-sub track">Cerveceria Artesanal</div>
+</header>
+
+<nav>
+  <button class="tab active" data-tab="about">Sobre nosotros</button>
+  <button class="tab" data-tab="shop">Comprar</button>
+</nav>
+
+<main>
+  <!-- ================= ABOUT ================= -->
+  <section class="panel on" id="about">
+    <div class="card about">
+      <h2>Sobre nosotros</h2>
+      <div class="rule"></div>
+
+      <p>Una cerveza es, antes que malta o lúpulo, <b>agua</b>: más del 90% de lo que hay en tu vaso salió de una fuente. Sus minerales deciden cómo se comporta la maceración y si el amargo se siente limpio o áspero. Por eso nos llamamos La Quebrada — el agua que baja de la montaña no es un detalle del nombre, es el ingrediente principal.</p>
+
+      <p>Una quebrada tampoco es solo agua: es corredor, bebedero y refugio. Colombia ocupa cerca del 0,7% de la superficie del planeta y alberga alrededor del 10% de sus especies — segundo país más biodiverso del mundo, primero en aves y en orquídeas. Por eso cada cerveza lleva el nombre de un animal que vive junto al agua, y cada etiqueta es una excusa para nombrar a uno que la mayoría nunca ha visto de cerca.</p>
+
+      <p>Cocinamos en lotes pequeños, en Medellín. Salen estilos nuevos cada semana. Artesanal no significa improvisado — significa que cada batch se prueba, se ajusta y se documenta, que la malta se escoge por sabor y no por costo por tonelada, y que si algo no quedó bien, no sale.</p>
+    </div>
+  </section>
+
+  <!-- ================= SHOP ================= -->
+  <section class="panel" id="shop">
+    <div class="shop-head">
+      <h2>La tienda</h2>
+      <p>Salen estilos nuevos cada semana. Los favoritos se quedan y se producen de fijo — son los que ves aquí. <b>Lleva 4 botellas, mezcladas como quieras, y pagas precio de 4-pack.</b></p>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
+    <div class="card cart" id="cart">
+      <h3>Tu carrito</h3>
+      <div class="cart-lines" id="lines"><div class="cart-empty">Todavía no has agregado nada.</div></div>
+      <div class="cart-total">
+        <span class="l">Total</span>
+        <span class="v" id="total">$0</span>
+      </div>
+      <p class="wa-note">Al finalizar, tu pedido se envía por WhatsApp para coordinar el pago y la entrega.</p>
+      <a class="btn disabled" id="checkout" aria-disabled="true" target="_blank" rel="noopener noreferrer">Finalizar pedido</a>
+      <button class="btn ghost" id="clear">Vaciar carrito</button>
+    </div>
+  </section>
+</main>
+
+<footer>La Quebrada · Cerveceria Artesanal · Bebe responsablemente</footer>
+
+<div class="overlay" id="overlay">
+  <div class="card modal" id="modal"></div>
+</div>
+
+<button class="pill" id="pill">
+  <span class="count" id="pill-count">0</span>
+  <span id="pill-total">$0</span>
+  <span style="opacity:.7">· ver carrito</span>
+</button>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

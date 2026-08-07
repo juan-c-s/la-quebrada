@@ -1,0 +1,212 @@
+/* Fuentes autohospedadas — sin CDNs de terceros, funcionan sin internet */
+
+/* Peach Club Script — decodificada del archivo original embebido en base64.
+   size-adjust normaliza su altura para que calce con el resto del diseño. */
+@font-face{
+  font-family:'Peach Club Script';font-style:normal;font-weight:400;font-display:swap;
+  size-adjust:64%;ascent-override:104%;descent-override:26%;line-gap-override:0%;
+  src:url(../fonts/peach-club-script.woff2) format('woff2');
+}
+/* Lobster queda solo como respaldo del script */
+@font-face{
+  font-family:'Lobster';font-style:normal;font-weight:400;font-display:swap;
+  src:local('Lobster'),
+      url(https://fonts.gstatic.com/s/lobster/v32/neILzCirqoswsqX9_oU.ttf) format('truetype');
+}
+@font-face{
+  font-family:'Glacial Indifference';font-style:normal;font-weight:400;font-display:swap;
+  src:url(../fonts/glacial-indifference-regular.woff) format('woff');
+}
+@font-face{
+  font-family:'Glacial Indifference';font-style:normal;font-weight:700;font-display:swap;
+  src:url(../fonts/glacial-indifference-bold.woff) format('woff');
+}
+
+:root{
+  --cream:#FCEDCB;
+  --cream-2:#FDF6E6;
+  --ink:#111010;
+  --river:#7FA6F0;
+  --river-2:#A9C4F7;
+  --amber:#B5654A;
+  --stout:#4A4644;
+  --line:rgba(17,16,16,.22);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Glacial Indifference',system-ui,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+.script{font-family:'Peach Club Script','Lobster',cursive;font-weight:400}
+
+/* El letter-spacing añade un espacio extra DESPUÉS de la última letra, así que
+   el texto centrado queda corrido hacia la izquierda. text-indent lo compensa.
+   Firefox lo nota más que Chrome. */
+.track{letter-spacing:.34em;text-transform:uppercase;text-indent:.34em}
+.tab,.btn{text-indent:.22em}
+.spec b{text-indent:.14em}
+.toast{text-indent:.14em}
+footer{text-indent:.18em}
+
+/* ---------- river background ---------- */
+.river-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.river-bg svg{position:absolute;top:-5%;left:0;width:100%;height:110%}
+
+/* ---------- header ---------- */
+header{position:relative;z-index:2;text-align:center;padding:44px 20px 10px}
+.logo{font-size:clamp(46px,9vw,86px);line-height:.95;text-shadow:3px 4px 0 rgba(17,16,16,.16)}
+.logo-sub{font-size:clamp(11px,2.2vw,17px);font-weight:800;margin-top:6px}
+
+nav{position:relative;z-index:3;display:flex;justify-content:center;gap:10px;padding:26px 16px 8px;flex-wrap:wrap}
+.tab{
+  font-family:'Glacial Indifference',sans-serif;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  background:transparent;border:2px solid var(--ink);color:var(--ink);
+  padding:11px 26px;border-radius:999px;cursor:pointer;transition:.18s;
+}
+.tab:hover{background:rgba(17,16,16,.07)}
+.tab.active{background:var(--ink);color:var(--cream)}
+
+main{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:26px 20px 120px}
+.panel{display:none;animation:fade .35s ease}
+.panel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.card{
+  background:var(--cream-2);border:2px solid var(--ink);border-radius:6px;
+  box-shadow:6px 7px 0 rgba(17,16,16,.13);
+}
+
+/* ---------- about ---------- */
+/* La tarjeta se angosta en vez de dejar el texto pegado a la izquierda */
+.about{padding:38px clamp(22px,5vw,54px);max-width:800px;margin:0 auto}
+.about h2{font-family:'Peach Club Script','Lobster',cursive;font-size:clamp(34px,6vw,52px);margin-bottom:4px}
+.rule{height:3px;background:var(--ink);width:100%;margin:14px 0 26px}
+.about p{font-size:16px;line-height:1.75;margin-bottom:16px}
+.about p:last-child{margin-bottom:0}
+
+/* ---------- shop ---------- */
+.shop-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.shop-head h2{font-family:'Peach Club Script','Lobster',cursive;font-size:clamp(34px,6vw,52px)}
+.shop-head p{font-size:13px;opacity:.7;max-width:40ch}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px}
+.beer{overflow:hidden;display:flex;flex-direction:column}
+.beer-top{
+  position:relative;padding:26px 24px 22px;cursor:pointer;
+  border-bottom:2px solid var(--ink);overflow:hidden;background:var(--cream-2);
+}
+.beer-top .wave{position:absolute;inset:0;width:100%;height:100%}
+.beer-top > *:not(.wave){position:relative;z-index:1}
+.beer-name{font-family:'Peach Club Script','Lobster',cursive;font-size:44px;line-height:1;text-shadow:2px 3px 0 rgba(17,16,16,.14)}
+.beer-latin{font-style:italic;font-size:14px;margin-top:2px;opacity:.85}
+.badge{
+  display:inline-block;margin-bottom:10px;padding:4px 12px;border-radius:999px;
+  border:2px solid var(--ink);background:var(--cream);
+  font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+}
+.rotating .beer-top{border-bottom:2px dashed var(--ink)}
+.rotating .beer-buy{justify-content:flex-end;flex:1}
+.rot-copy{font-size:14px;line-height:1.6;margin-top:14px;opacity:.85}
+.beer-style{font-weight:800;font-size:17px;margin-top:14px}
+.specs{display:flex;gap:8px;margin-top:14px}
+.spec{border:2px solid var(--ink);border-radius:4px;padding:5px 11px;background:rgba(253,246,230,.85);text-align:center;min-width:62px}
+.spec b{display:block;font-size:9px;letter-spacing:.14em;opacity:.7}
+.spec span{font-size:14px;font-weight:600}
+.more{margin-top:16px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px}
+
+.beer-buy{padding:20px 24px 24px;display:flex;flex-direction:column;gap:12px}
+.opt{display:flex;align-items:center;gap:12px;justify-content:space-between}
+.opt-l .n{font-weight:600;font-size:15px}
+.opt-l .p{font-size:13px;opacity:.7}
+.stepper{display:flex;align-items:center;border:2px solid var(--ink);border-radius:999px;overflow:hidden;background:var(--cream)}
+.stepper button{
+  width:34px;height:34px;border:0;background:transparent;font-size:19px;line-height:1;cursor:pointer;
+  font-family:'Glacial Indifference',sans-serif;color:var(--ink);transition:.15s;
+}
+.stepper button:hover{background:rgba(17,16,16,.1)}
+.stepper .q{width:34px;text-align:center;font-weight:600;font-size:15px}
+.soon-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.5}
+
+/* ---------- cart ---------- */
+.cart{margin-top:34px;padding:22px 26px;scroll-margin-top:24px}
+
+/* floating cart pill */
+.pill{
+  position:fixed;right:22px;bottom:22px;z-index:40;
+  display:flex;align-items:center;gap:12px;
+  background:var(--ink);color:var(--cream);border:2px solid var(--ink);
+  border-radius:999px;padding:13px 22px;cursor:pointer;
+  font-family:'Glacial Indifference',sans-serif;font-size:13px;font-weight:600;
+  box-shadow:4px 5px 0 rgba(17,16,16,.2);
+  transform:translateY(150%);transition:transform .3s ease, background .18s;
+}
+.pill.on{transform:none}
+.pill:hover{background:var(--river);color:var(--ink)}
+.pill .count{
+  background:var(--river);color:var(--ink);border-radius:999px;
+  min-width:24px;height:24px;display:grid;place-items:center;font-size:12px;font-weight:800;padding:0 6px;
+}
+.pill:hover .count{background:var(--cream)}
+.cart h3{font-family:'Peach Club Script','Lobster',cursive;font-size:30px;margin-bottom:12px}
+.cart-lines{display:flex;flex-direction:column;gap:8px;font-size:14px}
+.cart-line{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dotted var(--line);padding-bottom:7px}
+.cart-empty{font-size:14px;opacity:.6;font-style:italic}
+.cart-line i{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
+.cart-note{
+  margin-top:12px;padding:11px 15px;border-radius:5px;font-size:13px;line-height:1.5;
+  background:rgba(127,166,240,.22);border:2px dashed var(--ink);
+}
+.cart-note.ok{background:rgba(127,166,240,.42);border-style:solid}
+.cart-note + .cart-note{margin-top:8px}
+.cart-total{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:3px solid var(--ink)}
+.cart-total .l{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+.cart-total .v{font-family:'Peach Club Script','Lobster',cursive;font-size:32px}
+.wa-note{font-size:12px;line-height:1.5;opacity:.65;margin-top:14px;text-align:center}
+.btn{
+  width:100%;margin-top:16px;padding:15px;border:2px solid var(--ink);border-radius:999px;
+  background:var(--ink);color:var(--cream);font-family:'Glacial Indifference',sans-serif;
+  font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;transition:.18s;
+  display:block;text-align:center;text-decoration:none;
+}
+.btn:hover{background:var(--river);color:var(--ink)}
+.btn:disabled,.btn.disabled{opacity:.35;cursor:not-allowed;pointer-events:none}
+.btn.ghost{background:transparent;color:var(--ink);margin-top:8px}
+.btn.ghost:hover{background:rgba(17,16,16,.08)}
+
+/* ---------- modal ---------- */
+.overlay{
+  position:fixed;inset:0;z-index:50;background:rgba(17,16,16,.55);
+  display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto;
+}
+.overlay.on{display:flex}
+.modal{max-width:620px;width:100%;max-height:90vh;overflow-y:auto;animation:pop .25s ease}
+@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+.modal-top{position:relative;padding:30px 30px 26px;border-bottom:2px solid var(--ink);overflow:hidden}
+.modal-top .wave{position:absolute;inset:0;width:100%;height:100%}
+.modal-top > *:not(.wave){position:relative;z-index:1}
+.modal-body{padding:26px 30px 30px}
+.modal-body h4{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin:20px 0 8px}
+.modal-body h4:first-child{margin-top:0}
+.modal-body p,.modal-body li{font-size:15px;line-height:1.7}
+.modal-body ul{list-style:none}
+.modal-body li{padding-left:20px;position:relative}
+.modal-body li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:7px;background:var(--ink);border-radius:50%}
+.pairing{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.chip{border:2px solid var(--ink);border-radius:999px;padding:5px 14px;font-size:12px;font-weight:600;background:var(--cream)}
+.close{
+  position:absolute;top:14px;right:14px;z-index:2;width:36px;height:36px;border-radius:50%;
+  border:2px solid var(--ink);background:var(--cream);font-size:18px;cursor:pointer;line-height:1;color:var(--ink);
+}
+.close:hover{background:var(--ink);color:var(--cream)}
+
+footer{position:relative;z-index:2;text-align:center;padding:0 20px 46px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.55}
+
+.toast{
+  position:fixed;left:50%;bottom:28px;transform:translate(-50%,140%);z-index:80;
+  background:var(--ink);color:var(--cream);padding:14px 26px;border-radius:999px;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;transition:.35s;
+}
+.toast.on{transform:translate(-50%,0)}
