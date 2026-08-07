@@ -36,8 +36,8 @@ function priceCart(){
 
 function wave(color){
   return `<svg class="wave" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M250,-20 C330,60 170,120 250,190 C310,245 210,280 240,320 L400,320 L400,-20 Z" fill="${color}" opacity=".28"/>
-    <path d="M300,-20 C380,70 220,130 300,200 C355,250 265,285 295,320 L400,320 L400,-20 Z" fill="${color}" opacity=".45"/>
+    <path d="M250,-20 C330,60 170,120 250,190 C310,245 210,280 240,320 L400,320 L400,-20 Z" fill="${color}" opacity=".42"/>
+    <path d="M300,-20 C380,70 220,130 300,200 C355,250 265,285 295,320 L400,320 L400,-20 Z" fill="${color}" opacity=".65"/>
   </svg>`;
 }
 
@@ -226,10 +226,8 @@ function openModal(id){
       </div>
     </div>
     <div class="modal-body">
-      <h4>En la copa</h4>
-      <p>${b.short}</p>
-      <h4>La cerveza</h4>
-      <p>${b.long}</p>
+      <h4>Descripción</h4>
+      <p>${b.description}</p>
       <h4>Ingredientes</h4>
       <ul>${b.ingredients.map(i => `<li>${i}</li>`).join('')}</ul>
       <h4>Marida bien con</h4>
