@@ -54,8 +54,7 @@ const BEERS = [
     description:'Amarilla como su pico y el mango que disfruta. Lúpulo tropical protagonista, con una nota de pulpa real de mango. Turbia, jugosa, sin concesiones.',
     ingredients:['Malta de Cebada','Lúpulos Lotus, El Dorado','Levadura Ale','Pulpa de Mango'],
     pairing:['Cerdo','Hamburguesas','Papas Fritas'],
-    tag:'Próximamente',
-    comingSoon:true,
+    tag:'Disponible',
     prices:{unit:14000, four:50000}
   }
 ];
