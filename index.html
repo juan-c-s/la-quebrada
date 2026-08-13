@@ -36,6 +36,7 @@
 <nav>
   <button class="tab active" data-tab="about">Sobre nosotros</button>
   <button class="tab" data-tab="shop">Comprar</button>
+  <button class="tab" data-tab="suggest">Sugerir estilo</button>
 </nav>
 
 <main>
@@ -72,6 +73,35 @@
       <p class="wa-note">Al finalizar, tu pedido se envía por WhatsApp para coordinar el pago y la entrega.</p>
       <a class="btn disabled" id="checkout" aria-disabled="true" target="_blank" rel="noopener noreferrer">Finalizar pedido</a>
       <button class="btn ghost" id="clear">Vaciar carrito</button>
+    </div>
+  </section>
+
+  <!-- ================= SUGGEST ================= -->
+  <section class="panel" id="suggest">
+    <div class="card about">
+      <h2>Sugiere un estilo</h2>
+      <div class="rule"></div>
+      <p>¿Qué cerveza te gustaría ver en La Quebrada? Cuéntanos y la tenemos en cuenta para el próximo lote.</p>
+
+      <form class="suggest-form" id="suggest-form">
+        <label class="field">
+          <span>Estilo o idea de cerveza</span>
+          <input type="text" id="s-estilo" placeholder="Ej: Sour de maracuyá, Pilsner clásica..." required>
+        </label>
+        <label class="field">
+          <span>Cuéntanos más (opcional)</span>
+          <textarea id="s-detalle" rows="3" placeholder="¿Qué sabores te gustaría sentir en tu cerveza?"></textarea>
+        </label>
+        <label class="field">
+          <span>Tu nombre (opcional)</span>
+          <input type="text" id="s-nombre" placeholder="¿Cómo te llamas?">
+        </label>
+        <label class="field">
+          <span>Contacto (opcional)</span>
+          <input type="text" id="s-contacto" placeholder="WhatsApp, Instagram o email">
+        </label>
+        <button type="submit" class="btn" id="suggest-submit">Enviar sugerencia</button>
+      </form>
     </div>
   </section>
 </main>

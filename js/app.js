@@ -208,6 +208,37 @@ document.getElementById('clear').onclick = () => {
   render(); toast('Carrito vacío');
 };
 
+/* ---------- suggest form ---------- */
+const suggestForm = document.getElementById('suggest-form');
+suggestForm.addEventListener('submit', async e => {
+  e.preventDefault();
+  if(!SHEET_ENDPOINT){ toast('Formulario no configurado todavía'); return; }
+
+  const data = {
+    estilo: document.getElementById('s-estilo').value.trim(),
+    detalle: document.getElementById('s-detalle').value.trim(),
+    nombre: document.getElementById('s-nombre').value.trim(),
+    contacto: document.getElementById('s-contacto').value.trim()
+  };
+
+  const btn = document.getElementById('suggest-submit');
+  btn.disabled = true; btn.textContent = 'Enviando...';
+  try{
+    await fetch(SHEET_ENDPOINT, {
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify(data)
+    });
+    toast('¡Gracias por tu sugerencia!');
+    suggestForm.reset();
+  }catch(err){
+    toast('No se pudo enviar, intenta de nuevo');
+  }finally{
+    btn.disabled = false; btn.textContent = 'Enviar sugerencia';
+  }
+});
+
 /* ---------- modal ---------- */
 function openModal(id){
   const b = BEERS.find(x => x.id === id);

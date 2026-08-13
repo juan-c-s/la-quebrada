@@ -2,6 +2,8 @@
 
 const WHATSAPP_NUMBER = '573106046332'; // formato wa.me: solo dígitos, con código de país
 
+const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxhUGqJQRfMkvInYh-85UvhUOR9wzXJ1LM4qcFQMaLa3E_WOtgQRXX7o--SuKwRJiVBnA/exec';
+
 const BEERS = [
   {
     id:'murcielago',
@@ -34,7 +36,7 @@ const BEERS = [
     name:'Colibrí',
     latin:'Chaetocercus mulsant',
     style:'Wheat Ale',
-    color:'#4F7A3D',
+    color:'#7CB853',
     abv:'4.5%', ibu:'12', ebc:'7',
     description:'Puro néctar, siempre en vuelo. Cuerpo ligero, con notas de banano y clavo al fondo. Turbia por naturaleza, fácil de tomar.',
     ingredients:['Malta de Cebada, Malta de Trigo','Lúpulos Hallertau Tradition, Centennial','Levadura Ale'],
@@ -47,7 +49,7 @@ const BEERS = [
     name:'Tucán',
     latin:'Ramphastos ambiguus',
     style:'Hazy Mango IPA',
-    color:'#C98A12',
+    color:'#F0B429',
     abv:'8.3%', ibu:'45', ebc:'10',
     description:'Amarilla como su pico y el mango que disfruta. Lúpulo tropical protagonista, con una nota de pulpa real de mango. Turbia, jugosa, sin concesiones.',
     ingredients:['Malta de Cebada','Lúpulos Lotus, El Dorado','Levadura Ale','Pulpa de Mango'],
