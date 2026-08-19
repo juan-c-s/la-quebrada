@@ -43,7 +43,7 @@ function wave(color){
 
 /* ---------- render beer cards ---------- */
 document.getElementById('grid').innerHTML = BEERS.map(b => `
-  <div class="card beer">
+  <div class="card beer${b.soldOut ? ' sold-out' : ''}">
     <div class="beer-top" data-open="${b.id}">
       ${wave(b.color)}
       <div class="badge">${b.tag}</div>
@@ -63,8 +63,8 @@ document.getElementById('grid').innerHTML = BEERS.map(b => `
           <div class="n">Botella 330 ml</div>
           <div class="p">${money(b.prices.unit)} c/u · 4 por ${money(b.prices.four)}</div>
         </div>
-        ${b.comingSoon
-          ? `<div class="soon-label">Próximamente</div>`
+        ${b.comingSoon || b.soldOut
+          ? `<div class="soon-label">${b.tag}</div>`
           : `<div class="stepper">
           <button data-act="dec" data-b="${b.id}" aria-label="quitar">−</button>
           <div class="q" id="q-${b.id}">0</div>
@@ -267,8 +267,8 @@ function openModal(id){
       <p>Botella 330 ml — <b>${money(b.prices.unit)}</b><br>
       Cualquier 4 botellas — <b>${money(b.prices.four)}</b> <span style="opacity:.7">(${money(packUnit(b))} c/u)</span></p>
       <p style="font-size:13px;opacity:.75;margin-top:6px">El 4-pack se arma solo en el carrito: puedes mezclar estilos.</p>
-      ${b.comingSoon
-        ? `<div class="soon-label" style="margin-top:6px">Próximamente</div>`
+      ${b.comingSoon || b.soldOut
+        ? `<div class="soon-label" style="margin-top:6px">${b.tag}</div>`
         : `<button class="btn" id="addm">Agregar una botella</button>`}
     </div>`;
   document.getElementById('overlay').classList.add('on');

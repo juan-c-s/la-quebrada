@@ -15,7 +15,8 @@ const BEERS = [
     description:'Como el murciélago, oscuro y nocturno. Al olfato, café y tostado; en boca aparece un leve chocolate junto a notas intensas de café, con un picante que llega al final — cada trago lo apaga, y el siguiente lo revive. Bastante oscura, casi negra, con espuma café con leche. Cuerpo medio, sólido sin ser pesada ni cremosa. El remate deja café y el calor del picante.',
     ingredients:['Malta de Cebada, Cebada Tostada','Lúpulos Horizon, Golding','Levadura Ale','Café tostado','Pimientos cayenne'],
     pairing:['Carne Asada','Torta de Chocolate','Tacos'],
-    tag:'Disponible',
+    tag:'Agotado',
+    soldOut:true,
     prices:{unit:14000, four:50000}
   },
   {
@@ -28,7 +29,8 @@ const BEERS = [
     description:'El más grande de los roedores. Aroma maltoso y de caramelo, que en boca se encuentra con un toque cítrico y un leve amargo — refrescante. Rojo fuerte y oscuro. Cuerpo medio, liviana pero con estructura propia. Remate dulce y levemente amargo. Serena, como su origen.',
     ingredients:['Malta de Cebada','Lúpulos Centennial','Levadura Ale'],
     pairing:['Quesos','Costillas','Nueces'],
-    tag:'Disponible',
+    tag:'Agotado',
+    soldOut:true,
     prices:{unit:13000, four:46000}
   },
   {
