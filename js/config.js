@@ -4,6 +4,11 @@ const WHATSAPP_NUMBER = '573106046332'; // formato wa.me: solo dígitos, con có
 
 const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxhUGqJQRfMkvInYh-85UvhUOR9wzXJ1LM4qcFQMaLa3E_WOtgQRXX7o--SuKwRJiVBnA/exec';
 
+// URL del Apps Script del sheet de retroalimentación (separado del de sugerencias, porque
+// el formato de fila es distinto: una fila por cerveza calificada). Pega aquí el /exec
+// una vez despliegues el Apps Script del nuevo sheet.
+const FEEDBACK_SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyOWcgXh2-lqss_ueKZKA8eG71SWvZxI9H3tKomBnUncwN4tuWNDD2DHyVvWer7oyVo/exec';
+
 const BEERS = [
   {
     id:'murcielago',

@@ -37,6 +37,7 @@
   <button class="tab active" data-tab="about">Sobre nosotros</button>
   <button class="tab" data-tab="shop">Comprar</button>
   <button class="tab" data-tab="suggest">Sugerir estilo</button>
+  <button class="tab" data-tab="feedback">Tu opinión</button>
 </nav>
 
 <main>
@@ -101,6 +102,37 @@
           <input type="text" id="s-contacto" placeholder="WhatsApp, Instagram o email">
         </label>
         <button type="submit" class="btn" id="suggest-submit">Enviar sugerencia</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= FEEDBACK ================= -->
+  <section class="panel" id="feedback">
+    <div class="card about">
+      <h2>Tu opinión</h2>
+      <div class="rule"></div>
+      <p>¿Cuáles has probado? Cuéntanos qué te parecieron — nos ayuda a mejorar cada lote.</p>
+
+      <form class="suggest-form" id="feedback-form">
+        <div class="field">
+          <span>¿Cuáles has probado?</span>
+          <div class="picks" id="feedback-beers"></div>
+        </div>
+
+        <div id="feedback-ratings"></div>
+
+        <label class="field">
+          <span>¿Cómo te enteraste de La Quebrada?</span>
+          <select id="f-fuente" required>
+            <option value="" disabled selected>Elige una opción</option>
+            <option>Instagram</option>
+            <option>Un amigo me la recomendó</option>
+            <option>Un evento</option>
+            <option>Otro</option>
+          </select>
+        </label>
+
+        <button type="submit" class="btn" id="feedback-submit">Enviar opinión</button>
       </form>
     </div>
   </section>

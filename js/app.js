@@ -239,6 +239,112 @@ suggestForm.addEventListener('submit', async e => {
   }
 });
 
+/* ---------- feedback form ---------- */
+document.getElementById('feedback-beers').innerHTML = BEERS.map(b => `
+  <label class="pick">
+    <input type="checkbox" class="fb-beer" value="${b.id}">
+    <span>${b.name}</span>
+  </label>
+`).join('');
+
+const escHtml = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function renderFeedbackRatings(){
+  const checked = [...document.querySelectorAll('.fb-beer:checked')].map(c => c.value);
+
+  // se preservan los valores ya escritos/marcados, porque togglear una cerveza
+  // reconstruye todo el bloque de abajo
+  const prevRatings = {};
+  const prevComments = {};
+  const prevRecompra = {};
+  checked.forEach(id => {
+    const picked = document.querySelector(`input[name="rate-${id}"]:checked`);
+    if(picked) prevRatings[id] = picked.value;
+    const c = document.querySelector(`.fb-comentario[data-beer="${id}"]`);
+    if(c) prevComments[id] = c.value;
+    const r = document.querySelector(`input[name="recompra-${id}"]:checked`);
+    if(r) prevRecompra[id] = r.value;
+  });
+
+  document.getElementById('feedback-ratings').innerHTML = checked.map(id => {
+    const b = BEERS.find(x => x.id === id);
+    return `
+      <div class="field">
+        <span>¿Qué tanto te gustó ${b.name}?</span>
+        <div class="rating-row">
+          ${[1,2,3,4,5].map(n => `
+            <label class="rate">
+              <input type="radio" name="rate-${id}" value="${n}" ${prevRatings[id] === String(n) ? 'checked' : ''} required>
+              <span>${n}</span>
+            </label>
+          `).join('')}
+        </div>
+        <textarea class="fb-comentario" data-beer="${id}" rows="2" placeholder="Cuéntanos qué te gustó o qué no te gustó de ${b.name} (opcional)">${escHtml(prevComments[id] || '')}</textarea>
+        <span>¿La comprarías de nuevo?</span>
+        <div class="radio-row">
+          ${['Sí','Tal vez','No'].map(v => `
+            <label><input type="radio" name="recompra-${id}" value="${v}" ${prevRecompra[id] === v ? 'checked' : ''} required> ${v}</label>
+          `).join('')}
+        </div>
+      </div>`;
+  }).join('');
+}
+document.getElementById('feedback-beers').addEventListener('change', renderFeedbackRatings);
+
+const feedbackForm = document.getElementById('feedback-form');
+feedbackForm.addEventListener('submit', async e => {
+  e.preventDefault();
+  if(!FEEDBACK_SHEET_ENDPOINT){ toast('Formulario no configurado todavía'); return; }
+
+  const checked = [...document.querySelectorAll('.fb-beer:checked')].map(c => c.value);
+  if(checked.length === 0){ toast('Selecciona al menos una cerveza'); return; }
+
+  const ratings = {};
+  for(const id of checked){
+    const picked = document.querySelector(`input[name="rate-${id}"]:checked`);
+    if(!picked){ toast('Falta calificar ' + BEERS.find(b => b.id === id).name); return; }
+    ratings[id] = picked.value;
+  }
+
+  const comments = {};
+  for(const id of checked){
+    comments[id] = document.querySelector(`.fb-comentario[data-beer="${id}"]`).value.trim();
+  }
+
+  const recompras = {};
+  for(const id of checked){
+    const picked = document.querySelector(`input[name="recompra-${id}"]:checked`);
+    if(!picked){ toast('Falta decir si comprarías de nuevo ' + BEERS.find(b => b.id === id).name); return; }
+    recompras[id] = picked.value;
+  }
+
+  const fuente = document.getElementById('f-fuente').value;
+
+  const btn = document.getElementById('feedback-submit');
+  btn.disabled = true; btn.textContent = 'Enviando...';
+  try{
+    await Promise.all(checked.map(id => fetch(FEEDBACK_SHEET_ENDPOINT, {
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify({
+        cerveza: BEERS.find(b => b.id === id).name,
+        calificacion: ratings[id],
+        comentario: comments[id],
+        recompra: recompras[id],
+        fuente
+      })
+    })));
+    toast('¡Gracias por tu opinión!');
+    feedbackForm.reset();
+    document.getElementById('feedback-ratings').innerHTML = '';
+  }catch(err){
+    toast('No se pudo enviar, intenta de nuevo');
+  }finally{
+    btn.disabled = false; btn.textContent = 'Enviar opinión';
+  }
+});
+
 /* ---------- modal ---------- */
 function openModal(id){
   const b = BEERS.find(x => x.id === id);
