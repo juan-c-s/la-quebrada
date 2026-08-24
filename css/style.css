@@ -132,6 +132,11 @@ main{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:26px 20p
 
 .beer.sold-out{filter:grayscale(75%);opacity:.6}
 
+.preorder-note{
+  margin-top:10px;padding:9px 13px;border-radius:5px;font-size:12px;line-height:1.5;
+  background:rgba(127,166,240,.22);border:2px dashed var(--ink);
+}
+
 /* ---------- cart ---------- */
 .cart{margin-top:34px;padding:22px 26px;scroll-margin-top:24px}
 

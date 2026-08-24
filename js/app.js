@@ -71,6 +71,7 @@ document.getElementById('grid').innerHTML = BEERS.map(b => `
           <button data-act="inc" data-b="${b.id}" aria-label="agregar">+</button>
         </div>`}
       </div>
+      ${b.preOrder ? `<div class="preorder-note">En preventa — los pedidos con esta cerveza pueden demorar un poco más.</div>` : ''}
     </div>
   </div>
 `).join('') + `
@@ -373,6 +374,7 @@ function openModal(id){
       <p>Botella 330 ml — <b>${money(b.prices.unit)}</b><br>
       Cualquier 4 botellas — <b>${money(b.prices.four)}</b> <span style="opacity:.7">(${money(packUnit(b))} c/u)</span></p>
       <p style="font-size:13px;opacity:.75;margin-top:6px">El 4-pack se arma solo en el carrito: puedes mezclar estilos.</p>
+      ${b.preOrder ? `<div class="preorder-note">En preventa — los pedidos con esta cerveza pueden demorar un poco más.</div>` : ''}
       ${b.comingSoon || b.soldOut
         ? `<div class="soon-label" style="margin-top:6px">${b.tag}</div>`
         : `<button class="btn" id="addm">Agregar una botella</button>`}

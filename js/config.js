@@ -63,6 +63,34 @@ const BEERS = [
     pairing:['Cerdo','Hamburguesas','Papas Fritas'],
     tag:'Disponible',
     prices:{unit:14000, four:50000}
+  },
+  {
+    id:'salamandra',
+    name:'Salamandra',
+    latin:'Notophthalmus viridescens',
+    style:'West Coast IPA',
+    color:'#D9601A',
+    abv:'6%', ibu:'60', ebc:'20',
+    description:'Como la salamandra, naranja e imposible de ignorar. Cítrico y pino fragante anuncian una amargura limpia y directa, sostenida por malta y caramelo.',
+    ingredients:['Malta de Cebada','Lúpulos Apollo, Centennial','Levadura Ale'],
+    pairing:['Fritos','Pizza','Chocolate'],
+    tag:'Preventa',
+    preOrder:true,
+    prices:{unit:13000, four:46000}
+  },
+  {
+    id:'ranadorada',
+    name:'Rana Dorada',
+    latin:'Phyllobates terribilis',
+    style:'Belgian Golden Strong',
+    color:'#B8860B',
+    abv:'9%', ibu:'25', ebc:'9',
+    description:'Igual que la rana dorada, el color dorado fuerte advierte sobre su potencia. Notas frutales y un toque de pimienta sobre un cuerpo liviano, con un calor de alcohol suave.',
+    ingredients:['Malta de Cebada','Lúpulos Hallertauer Tradition, Challenger','Levadura Ale'],
+    pairing:['Frutas','Mariscos','Charcutería'],
+    tag:'Preventa',
+    preOrder:true,
+    prices:{unit:14000, four:50000}
   }
 ];
 
