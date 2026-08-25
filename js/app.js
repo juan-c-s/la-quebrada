@@ -137,6 +137,10 @@ if(!activateTab(location.hash.slice(1), {scroll:false})){
   history.replaceState(null, '', location.pathname + location.search);
 }
 
+// cubre el caso de pegar/editar el link con la pestaña ya abierta en el navegador
+// (el navegador no recarga el JS si solo cambia el hash de la misma página)
+window.addEventListener('hashchange', () => activateTab(location.hash.slice(1)));
+
 /* ---------- cart ---------- */
 let toastTimer;
 function toast(msg){
