@@ -110,15 +110,32 @@ function orderMessage(){
 document.getElementById('notify').href =
   whatsappLink('Hola! Quiero que me avisen del próximo lanzamiento de La Quebrada.');
 
-/* ---------- tabs ---------- */
-document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
+/* ---------- tabs ----------
+   Cada pestaña queda enlazable con #about, #shop, #suggest, #feedback —
+   se usa history.replaceState (no location.hash) para no heredar el salto
+   automático del navegador al elemento con ese id. */
+function activateTab(name, opts){
+  const scroll = !opts || opts.scroll !== false;
+  const tab = document.querySelector(`.tab[data-tab="${name}"]`);
+  const panel = document.getElementById(name);
+  if(!tab || !panel) return false;
   document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(x => x.classList.remove('on'));
-  t.classList.add('active');
-  document.getElementById(t.dataset.tab).classList.add('on');
-  window.scrollTo({top:0, behavior:'smooth'});
+  tab.classList.add('active');
+  panel.classList.add('on');
+  if(scroll) window.scrollTo({top:0, behavior:'smooth'});
   updatePill();
+  return true;
+}
+
+document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
+  activateTab(t.dataset.tab);
+  history.replaceState(null, '', '#' + t.dataset.tab);
 });
+
+if(!activateTab(location.hash.slice(1), {scroll:false})){
+  history.replaceState(null, '', location.pathname + location.search);
+}
 
 /* ---------- cart ---------- */
 let toastTimer;
