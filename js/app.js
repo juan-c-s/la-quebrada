@@ -74,20 +74,7 @@ document.getElementById('grid').innerHTML = BEERS.map(b => `
       ${b.preOrder ? `<div class="preorder-note">En preventa — los pedidos con esta cerveza pueden demorar un poco más.</div>` : ''}
     </div>
   </div>
-`).join('') + `
-  <div class="card beer rotating">
-    <div class="beer-top" style="cursor:default">
-      ${wave('#7FA6F0')}
-      <div class="badge">Rotativa</div>
-      <div class="script beer-name">Lo que viene</div>
-      <div class="beer-latin">Edición de temporada</div>
-      <div class="beer-style">Salen estilos nuevos cada semana</div>
-      <p class="rot-copy">Probamos cosas distintas todas las semanas. Escríbenos para saber qué hay cocinando.</p>
-    </div>
-    <div class="beer-buy">
-      <a class="btn" id="notify" target="_blank" rel="noopener noreferrer">Avísenme del próximo lanzamiento</a>
-    </div>
-  </div>`;
+`).join('');
 
 /* ---------- WhatsApp links ----------
    El checkout es un <a> normal, no un botón con onclick + window.open:
@@ -103,12 +90,15 @@ function orderMessage(){
   const prices = rows.map(r => `${r.beer.name}: ${money(r.beer.prices.unit)} c/u · 4 por ${money(r.beer.prices.four)}`).join('\n');
   let msg = `Hola! Quiero hacer este pedido en La Quebrada:\n\n${items}\n\nPrecio:\n${prices}\n\nTotal: ${money(subtotal)}`;
   if(saved > 0) msg += `\nAhorro: ${money(saved)}`;
-  msg += `\n\nNombre: \nDirección de entrega: `;
+
+  const delivery = document.querySelector('input[name="delivery"]:checked')?.value || 'domicilio';
+  if(delivery === 'recoger'){
+    msg += `\n\nEntrega: Recojo en Sector El Poblado\nNombre: `;
+  } else {
+    msg += `\n\nEntrega: Domicilio (el precio puede variar según la dirección)\nNombre: \nDirección de entrega: `;
+  }
   return msg;
 }
-
-document.getElementById('notify').href =
-  whatsappLink('Hola! Quiero que me avisen del próximo lanzamiento de La Quebrada.');
 
 /* ---------- tabs ----------
    Cada pestaña queda enlazable con #about, #shop, #suggest, #feedback —

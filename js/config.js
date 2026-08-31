@@ -74,8 +74,7 @@ const BEERS = [
     description:'Como la salamandra, naranja e imposible de ignorar. Cítrico y pino fragante anuncian una amargura limpia y directa, sostenida por malta y caramelo.',
     ingredients:['Malta de Cebada','Lúpulos Apollo, Centennial','Levadura Ale'],
     pairing:['Fritos','Pizza','Chocolate'],
-    tag:'Preventa',
-    preOrder:true,
+    tag:'Disponible',
     prices:{unit:13000, four:46000}
   },
   {
@@ -88,8 +87,7 @@ const BEERS = [
     description:'Igual que la rana dorada, el color dorado fuerte advierte sobre su potencia. Notas frutales y un toque de pimienta sobre un cuerpo liviano, con un calor de alcohol suave.',
     ingredients:['Malta de Cebada','Lúpulos Hallertauer Tradition, Challenger','Levadura Ale'],
     pairing:['Frutas','Mariscos','Charcutería'],
-    tag:'Preventa',
-    preOrder:true,
+    tag:'Disponible',
     prices:{unit:14000, four:50000}
   }
 ];

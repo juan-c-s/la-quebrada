@@ -107,9 +107,6 @@ main{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:26px 20p
   border:2px solid var(--ink);background:var(--cream);
   font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
 }
-.rotating .beer-top{border-bottom:2px dashed var(--ink)}
-.rotating .beer-buy{justify-content:flex-end;flex:1}
-.rot-copy{font-size:14px;line-height:1.6;margin-top:14px;opacity:.85}
 .beer-style{font-weight:800;font-size:17px;margin-top:14px}
 .specs{display:flex;gap:8px;margin-top:14px}
 .spec{border:2px solid var(--ink);border-radius:4px;padding:5px 11px;background:rgba(253,246,230,.85);text-align:center;min-width:62px}
@@ -172,6 +169,10 @@ main{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:26px 20p
 .cart-total .l{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
 .cart-total .v{font-family:'Peach Club Script','Lobster',cursive;font-size:32px}
 .wa-note{font-size:12px;line-height:1.5;opacity:.65;margin-top:14px;text-align:center}
+.delivery-choice{display:flex;flex-direction:column;gap:10px;margin-top:16px;padding-top:14px;border-top:2px dashed var(--ink)}
+.radio-opt{display:flex;gap:10px;align-items:flex-start;font-size:14px;cursor:pointer}
+.radio-opt input{margin-top:3px;accent-color:var(--ink)}
+.radio-opt small{display:block;opacity:.65;font-size:11px;margin-top:2px;font-weight:400}
 .btn{
   width:100%;margin-top:16px;padding:15px;border:2px solid var(--ink);border-radius:999px;
   background:var(--ink);color:var(--cream);font-family:'Glacial Indifference',sans-serif;
