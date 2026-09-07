@@ -11,6 +11,19 @@ const FEEDBACK_SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyOWcgX
 
 const BEERS = [
   {
+    id:'mona',
+    name:'Mona',
+    latin:'Cebus capucinus',
+    style:'Blonde Ale',
+    color:'#E3C767',
+    abv:'5.6%', ibu:'25', ebc:'10',
+    description:'Rubia y curiosa, Blonde ale maltosa y ligera, de fermentación limpia con un leve toque frutal de fondo. Amargor notable pero suave, cierre seco y agradable.',
+    ingredients:['Malta de Cebada','Lúpulos Apollo, Challenger','Levadura Ale'],
+    pairing:['Pollo','Arepa','Sanduche'],
+    tag:'Disponible',
+    prices:{unit:11000, four:38000}
+  },
+  {
     id:'murcielago',
     name:'Murciélago',
     latin:'Desmodus rotundus',
@@ -34,8 +47,7 @@ const BEERS = [
     description:'El más grande de los roedores. Aroma maltoso y de caramelo, que en boca se encuentra con un toque cítrico y un leve amargo — refrescante. Rojo fuerte y oscuro. Cuerpo medio, liviana pero con estructura propia. Remate dulce y levemente amargo. Serena, como su origen.',
     ingredients:['Malta de Cebada','Lúpulos Centennial','Levadura Ale'],
     pairing:['Quesos','Costillas','Nueces'],
-    tag:'Preventa',
-    preOrder:true,
+    tag:'Disponible',
     prices:{unit:13000, four:46000}
   },
   {
