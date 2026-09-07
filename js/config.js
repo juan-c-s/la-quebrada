@@ -1,6 +1,6 @@
 // Datos del catálogo y contacto — cambia precios/copy aquí, sin tocar app.js
 
-const WHATSAPP_NUMBER = '573106046332'; // formato wa.me: solo dígitos, con código de país
+const WHATSAPP_NUMBER = '573054251432'; // formato wa.me: solo dígitos, con código de país
 
 const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxhUGqJQRfMkvInYh-85UvhUOR9wzXJ1LM4qcFQMaLa3E_WOtgQRXX7o--SuKwRJiVBnA/exec';
 
