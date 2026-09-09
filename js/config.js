@@ -20,7 +20,8 @@ const BEERS = [
     description:'Rubia y curiosa, Blonde ale maltosa y ligera, de fermentación limpia con un leve toque frutal de fondo. Amargor notable pero suave, cierre seco y agradable.',
     ingredients:['Malta de Cebada','Lúpulos Apollo, Challenger','Levadura Ale'],
     pairing:['Pollo','Arepa','Sanduche'],
-    tag:'Disponible',
+    tag:'Preventa',
+    preOrder:true,
     prices:{unit:11000, four:38000}
   },
   {
