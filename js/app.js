@@ -74,7 +74,25 @@ document.getElementById('grid').innerHTML = BEERS.map(b => `
       ${b.preOrder ? `<div class="preorder-note">En preventa — los pedidos con esta cerveza pueden demorar un poco más.</div>` : ''}
     </div>
   </div>
-`).join('');
+`).join('') + `
+  <div class="card beer combo">
+    <div class="beer-top" style="cursor:default">
+      ${wave(COMBO.color)}
+      <div class="badge">Edición especial</div>
+      <div class="script beer-name">${COMBO.name}</div>
+      <div class="beer-style">${COMBO.subtitle}</div>
+      <p class="rot-copy">${COMBO.description}</p>
+    </div>
+    <div class="beer-buy">
+      <div class="opt">
+        <div class="opt-l">
+          <div class="n">Combo × 4 botellas</div>
+          <div class="p">${money(COMBO.price)}</div>
+        </div>
+      </div>
+      <a class="btn" id="combo-order" target="_blank" rel="noopener noreferrer">Pedir combo por WhatsApp</a>
+    </div>
+  </div>`;
 
 /* ---------- WhatsApp links ----------
    El checkout es un <a> normal, no un botón con onclick + window.open:
@@ -84,19 +102,31 @@ function whatsappLink(message){
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
+/* ---------- entrega ----------
+   Domicilio o recoger — se usa tanto en el pedido normal como en el combo,
+   así que queda en una sola función. */
+function deliveryBlock(){
+  const delivery = document.querySelector('input[name="delivery"]:checked')?.value || 'domicilio';
+  return delivery === 'recoger'
+    ? `Entrega: Recojo en Sector El Poblado\nNombre: `
+    : `Entrega: Domicilio (el precio puede variar según la dirección)\nNombre: \nDirección de entrega: `;
+}
+
+function updateComboLink(){
+  document.getElementById('combo-order').href = whatsappLink(
+    `Hola! Quiero pedir el ${COMBO.name} (${COMBO.subtitle}) por ${money(COMBO.price)}.\n\n${deliveryBlock()}`
+  );
+}
+updateComboLink();
+document.querySelectorAll('input[name="delivery"]').forEach(r => r.onchange = () => { render(); updateComboLink(); });
+
 function orderMessage(){
   const {rows, subtotal, saved} = priceCart();
   const items = rows.map(r => `${r.qty} × ${r.beer.name}`).join('\n');
   const prices = rows.map(r => `${r.beer.name}: ${money(r.beer.prices.unit)} c/u · 4 por ${money(r.beer.prices.four)}`).join('\n');
   let msg = `Hola! Quiero hacer este pedido en La Quebrada:\n\n${items}\n\nPrecio:\n${prices}\n\nTotal: ${money(subtotal)}`;
   if(saved > 0) msg += `\nAhorro: ${money(saved)}`;
-
-  const delivery = document.querySelector('input[name="delivery"]:checked')?.value || 'domicilio';
-  if(delivery === 'recoger'){
-    msg += `\n\nEntrega: Recojo en Sector El Poblado\nNombre: `;
-  } else {
-    msg += `\n\nEntrega: Domicilio (el precio puede variar según la dirección)\nNombre: \nDirección de entrega: `;
-  }
+  msg += `\n\n${deliveryBlock()}`;
   return msg;
 }
 

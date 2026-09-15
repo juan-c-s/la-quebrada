@@ -20,8 +20,7 @@ const BEERS = [
     description:'Rubia y curiosa, Blonde ale maltosa y ligera, de fermentación limpia con un leve toque frutal de fondo. Amargor notable pero suave, cierre seco y agradable.',
     ingredients:['Malta de Cebada','Lúpulos Apollo, Challenger','Levadura Ale'],
     pairing:['Pollo','Arepa','Sanduche'],
-    tag:'Preventa',
-    preOrder:true,
+    tag:'Disponible',
     prices:{unit:11000, four:38000}
   },
   {
@@ -34,8 +33,7 @@ const BEERS = [
     description:'Como el murciélago, oscuro y nocturno. Al olfato, café y tostado; en boca aparece un leve chocolate junto a notas intensas de café, con un picante que llega al final — cada trago lo apaga, y el siguiente lo revive. Bastante oscura, casi negra, con espuma café con leche. Cuerpo medio, sólido sin ser pesada ni cremosa. El remate deja café y el calor del picante.',
     ingredients:['Malta de Cebada, Cebada Tostada','Lúpulos Horizon, Golding','Levadura Ale','Café tostado','Pimientos cayenne'],
     pairing:['Carne Asada','Torta de Chocolate','Tacos'],
-    tag:'Preventa',
-    preOrder:true,
+    tag:'Disponible',
     prices:{unit:14000, four:50000}
   },
   {
@@ -104,5 +102,14 @@ const BEERS = [
     prices:{unit:14000, four:50000}
   }
 ];
+
+// Combo de edición especial — precio fijo, no se mezcla con el sistema de 4-pack por estilo
+const COMBO = {
+  name:'Combo del Amor y la Amistad',
+  subtitle:'2 Chigüiro + 2 Murciélago',
+  description:'Comparte el amor con tu pareja dándoles este combo de cervezas dulces y picantes.',
+  color:'#D6273C',
+  price:43000
+};
 
 const PACK = 4; // tamaño del paquete
