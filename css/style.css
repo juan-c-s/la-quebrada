@@ -257,6 +257,7 @@ footer{position:relative;z-index:2;text-align:center;padding:0 20px 46px;font-si
 .toast{
   position:fixed;left:50%;bottom:28px;transform:translate(-50%,140%);z-index:80;
   background:var(--ink);color:var(--cream);padding:14px 26px;border-radius:999px;
-  font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;transition:.35s;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  transition:transform .35s, opacity .35s;opacity:0;pointer-events:none;
 }
-.toast.on{transform:translate(-50%,0)}
+.toast.on{transform:translate(-50%,0);opacity:1;pointer-events:auto}
