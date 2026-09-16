@@ -21,7 +21,7 @@ const BEERS = [
     ingredients:['Malta de Cebada','Lúpulos Apollo, Challenger','Levadura Ale'],
     pairing:['Pollo','Arepa','Sanduche'],
     tag:'Disponible',
-    prices:{unit:11000, four:38000}
+    prices:{unit:11000, four:42000}
   },
   {
     id:'murcielago',
