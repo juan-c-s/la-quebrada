@@ -113,7 +113,6 @@ main{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:26px 20p
 .spec b{display:block;font-size:9px;letter-spacing:.14em;opacity:.7}
 .spec span{font-size:14px;font-weight:600}
 .more{margin-top:16px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px}
-.rot-copy{font-size:14px;line-height:1.6;margin-top:14px;opacity:.85}
 
 .beer-buy{padding:20px 24px 24px;display:flex;flex-direction:column;gap:12px}
 .opt{display:flex;align-items:center;gap:12px;justify-content:space-between}

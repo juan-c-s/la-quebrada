@@ -74,25 +74,7 @@ document.getElementById('grid').innerHTML = BEERS.map(b => `
       ${b.preOrder ? `<div class="preorder-note">En preventa — los pedidos con esta cerveza pueden demorar un poco más.</div>` : ''}
     </div>
   </div>
-`).join('') + `
-  <div class="card beer combo">
-    <div class="beer-top" style="cursor:default">
-      ${wave(COMBO.color)}
-      <div class="badge">Edición especial</div>
-      <div class="script beer-name">${COMBO.name}</div>
-      <div class="beer-style">${COMBO.subtitle}</div>
-      <p class="rot-copy">${COMBO.description}</p>
-    </div>
-    <div class="beer-buy">
-      <div class="opt">
-        <div class="opt-l">
-          <div class="n">Combo × 4 botellas</div>
-          <div class="p">${money(COMBO.price)}</div>
-        </div>
-      </div>
-      <a class="btn" id="combo-order" target="_blank" rel="noopener noreferrer">Pedir combo por WhatsApp</a>
-    </div>
-  </div>`;
+`).join('');
 
 /* ---------- WhatsApp links ----------
    El checkout es un <a> normal, no un botón con onclick + window.open:
@@ -112,13 +94,7 @@ function deliveryBlock(){
     : `Entrega: Domicilio (el precio puede variar según la dirección)\nNombre: \nDirección de entrega: `;
 }
 
-function updateComboLink(){
-  document.getElementById('combo-order').href = whatsappLink(
-    `Hola! Quiero pedir el ${COMBO.name} (${COMBO.subtitle}) por ${money(COMBO.price)}.\n\n${deliveryBlock()}`
-  );
-}
-updateComboLink();
-document.querySelectorAll('input[name="delivery"]').forEach(r => r.onchange = () => { render(); updateComboLink(); });
+document.querySelectorAll('input[name="delivery"]').forEach(r => r.onchange = render);
 
 function orderMessage(){
   const {rows, subtotal, saved} = priceCart();

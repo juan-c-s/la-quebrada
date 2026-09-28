@@ -103,13 +103,4 @@ const BEERS = [
   }
 ];
 
-// Combo de edición especial — precio fijo, no se mezcla con el sistema de 4-pack por estilo
-const COMBO = {
-  name:'Combo del Amor y la Amistad',
-  subtitle:'2 Chigüiro + 2 Murciélago',
-  description:'Comparte el amor con tu pareja dándoles este combo de cervezas dulces y picantes.',
-  color:'#D6273C',
-  price:43000
-};
-
 const PACK = 4; // tamaño del paquete
