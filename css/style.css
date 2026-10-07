@@ -108,6 +108,14 @@ main{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:26px 20p
   font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
 }
 .beer-style{font-weight:800;font-size:17px;margin-top:14px}
+.beer-top > .medal{
+  position:absolute;top:14px;right:14px;
+  display:flex;flex-direction:column;align-items:center;gap:1px;
+  padding:6px 8px 5px;border:2px solid var(--ink);border-radius:8px;background:var(--cream);
+  font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;line-height:1.25;text-align:center;
+}
+.medal-star{display:block}
+.medal-line{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .specs{display:flex;gap:8px;margin-top:14px}
 .spec{border:2px solid var(--ink);border-radius:4px;padding:5px 11px;background:rgba(253,246,230,.85);text-align:center;min-width:62px}
 .spec b{display:block;font-size:9px;letter-spacing:.14em;opacity:.7}

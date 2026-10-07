@@ -41,11 +41,29 @@ function wave(color){
   </svg>`;
 }
 
+/* ---------- medallas ---------- */
+const MEDAL_COLORS = {
+  gold:   ['#FBE08A', '#D9A21B', '#9A6B08'],
+  bronze: ['#EBB78C', '#B8733F', '#7A4521']
+};
+function medalStar(b, size){
+  const [c1, c2, c3] = MEDAL_COLORS[b.medal.type];
+  const id = `medal-${b.id}-${size}`;
+  return `<svg class="medal-star" width="${size}" height="${size}" viewBox="0 0 24 24" aria-hidden="true">
+    <defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="${c1}"/><stop offset=".55" stop-color="${c2}"/><stop offset="1" stop-color="${c3}"/>
+    </linearGradient></defs>
+    <polygon points="12,1.5 14.9,8.6 22.5,9.2 16.7,14.2 18.5,21.6 12,17.6 5.5,21.6 7.3,14.2 1.5,9.2 9.1,8.6"
+      fill="url(#${id})" stroke="#111010" stroke-width="1.2" stroke-linejoin="round"/>
+  </svg>`;
+}
+
 /* ---------- render beer cards ---------- */
 document.getElementById('grid').innerHTML = BEERS.map(b => `
   <div class="card beer${b.soldOut ? ' sold-out' : ''}">
     <div class="beer-top" data-open="${b.id}">
       ${wave(b.color)}
+      ${b.medal ? `<div class="medal" title="Medalla de ${b.medal.label.toLowerCase()} — ${b.medal.event}">${medalStar(b, 26)}<span>${b.medal.label}</span><span>${b.medal.event}</span></div>` : ''}
       <div class="badge">${b.tag}</div>
       <div class="script beer-name">${b.name}</div>
       <div class="beer-latin">${b.latin}</div>
@@ -374,6 +392,7 @@ function openModal(id){
       <div class="script" style="font-size:52px;line-height:1;text-shadow:2px 3px 0 rgba(17,16,16,.14)">${b.name}</div>
       <div class="beer-latin">${b.latin}</div>
       <div class="beer-style" style="font-size:19px">${b.style}</div>
+      ${b.medal ? `<div class="medal-line">${medalStar(b, 22)}<span>Medalla de ${b.medal.label.toLowerCase()} · ${b.medal.event}</span></div>` : ''}
       <div class="specs">
         <div class="spec"><b>ABV</b><span>${b.abv}</span></div>
         <div class="spec"><b>IBU</b><span>${b.ibu}</span></div>
