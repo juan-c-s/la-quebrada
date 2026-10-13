@@ -87,7 +87,8 @@ const BEERS = [
     description:'Como la salamandra, naranja e imposible de ignorar. Cítrico y pino fragante anuncian una amargura limpia y directa, sostenida por malta y caramelo.',
     ingredients:['Malta de Cebada','Lúpulos Apollo, Centennial','Levadura Ale'],
     pairing:['Fritos','Pizza','Chocolate'],
-    tag:'Disponible',
+    tag:'Agotado',
+    soldOut:true,
     prices:{unit:13000, four:46000}
   },
   {
