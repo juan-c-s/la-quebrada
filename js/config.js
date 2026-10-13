@@ -100,7 +100,8 @@ const BEERS = [
     description:'Igual que la rana dorada, el color dorado fuerte advierte sobre su potencia. Notas frutales y un toque de pimienta sobre un cuerpo liviano, con un calor de alcohol suave.',
     ingredients:['Malta de Cebada','Lúpulos Hallertauer Tradition, Challenger','Levadura Ale'],
     pairing:['Frutas','Mariscos','Charcutería'],
-    tag:'Disponible',
+    tag:'Agotado',
+    soldOut:true,
     prices:{unit:14000, four:50000}
   }
 ];
