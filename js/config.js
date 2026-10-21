@@ -91,6 +91,20 @@ const BEERS = [
     prices:{unit:13000, four:46000}
   },
   {
+    id:'viudanegra',
+    name:'Viuda Negra',
+    latin:'Latrodectus curacaviensis',
+    style:'Imperial Stout',
+    color:'#141212',
+    abv:'9%', ibu:'60', ebc:'90',
+    description:'La viuda negra atrae con dulzura y no perdona. Chocolate, vainilla y malta tostada sobre un cuerpo pleno y cremoso gracias a la lactosa, como una malteada de chocolate.',
+    ingredients:['Malta de Cebada, Cebada Tostada, Lactosa, Saborizante de Vainilla','Lúpulos Apollo','Levadura Ale'],
+    pairing:['Helado','Tiramisú','Carne ahumada'],
+    tag:'Edición limitada',
+    limited:true,
+    prices:{unit:15000, four:54000}
+  },
+  {
     id:'ranadorada',
     name:'Rana Dorada',
     latin:'Phyllobates terribilis',
