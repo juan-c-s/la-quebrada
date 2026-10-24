@@ -137,6 +137,28 @@ main{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:26px 20p
 
 .beer.sold-out{filter:grayscale(75%);opacity:.6}
 
+/* combo promocional */
+.combo{grid-column:1 / -1}
+.combo-main{display:flex;flex-direction:column}
+.combo-headline{font-weight:800;line-height:1.02;font-size:clamp(36px,8vw,60px);letter-spacing:-.01em;margin:12px 0 20px}
+.combo-headline span{display:block}
+.combo-items{display:flex;flex-direction:column;gap:12px;padding:14px 18px;border:2px solid var(--ink);border-radius:16px;background:rgba(253,246,230,.88)}
+.combo-item{display:flex;flex-wrap:wrap;align-items:center;column-gap:8px;row-gap:2px;font-size:15px}
+.combo-qty{font-weight:800}
+.combo-name{font-size:30px;line-height:1.1}
+.combo-style{font-weight:700}
+.combo-medal{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.8}
+.combo-buy{justify-content:center;gap:10px}
+.combo-was{font-size:20px;font-weight:700;text-decoration:line-through;opacity:.55}
+.combo-price{font-size:clamp(46px,9vw,68px);font-weight:800;line-height:1}
+.combo-save{align-self:flex-start;padding:8px 18px;border:2px solid var(--ink);border-radius:16px;background:#7FA6F0;font-weight:800;font-size:15px;text-align:center}
+.combo-until{font-size:12px;opacity:.65}
+@media (min-width:760px){
+  .combo-main{flex-direction:row}
+  .combo-main .beer-top{flex:1.55;border-bottom:none;border-right:2px solid var(--ink)}
+  .combo-main .beer-buy{flex:1;padding:28px}
+}
+
 .preorder-note{
   margin-top:10px;padding:9px 13px;border-radius:5px;font-size:12px;line-height:1.5;
   background:rgba(127,166,240,.22);border:2px dashed var(--ink);

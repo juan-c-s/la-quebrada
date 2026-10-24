@@ -120,4 +120,14 @@ const BEERS = [
   }
 ];
 
+// Combo promocional — precio fijo, queda fuera del carrito y del descuento de 4-pack.
+// Se oculta solo después de `expires` (fin del 30 de noviembre, hora de Colombia).
+const COMBO = {
+  name:'Combo Promocional',
+  items:[{id:'murcielago', qty:2}, {id:'salamandra', qty:2}],
+  price:42000,
+  expires:'2026-11-30T23:59:59-05:00',
+  validUntil:'30 de noviembre'
+};
+
 const PACK = 4; // tamaño del paquete

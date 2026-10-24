@@ -64,8 +64,55 @@ function medalStar(b, size){
   </svg>`;
 }
 
+/* ---------- combo promocional ----------
+   El precio "normal" sale de los precios de 4-pack de cada cerveza, así que
+   si cambian los precios en config.js el ahorro se recalcula solo. */
+const comboActive = () => Date.now() <= new Date(COMBO.expires).getTime();
+const comboBeers = () => COMBO.items.map(i => ({...i, beer: BEERS.find(b => b.id === i.id)}));
+const comboRegular = () => comboBeers().reduce((s, i) => s + i.qty * packUnit(i.beer), 0);
+const comboSoldOut = () => comboBeers().some(i => i.beer.soldOut);
+
+function comboHTML(){
+  if(!comboActive()) return '';
+  const rows = comboBeers();
+  const regular = comboRegular();
+  const saved = regular - COMBO.price;
+  const out = comboSoldOut();
+  return `
+  <div class="card beer combo${out ? ' sold-out' : ''}">
+    <div class="combo-main">
+      <div class="beer-top" style="cursor:default">
+        ${wave('#7FA6F0')}
+        <div class="badge">${COMBO.name}</div>
+        <div class="combo-headline">
+          <span style="color:#AB8800">4 Cervezas</span>
+          <span style="color:#868686">2 Medallas</span>
+          <span style="color:#975100">1 Precio</span>
+        </div>
+        <div class="combo-items">
+          ${rows.map(i => `<div class="combo-item">
+            <span class="combo-qty">${i.qty}×</span>
+            <span class="script combo-name" style="color:${i.beer.id === 'salamandra' ? '#FF6A1A' : 'var(--ink)'}">${i.beer.name}</span>
+            <span class="combo-style">${i.beer.style}</span>
+            ${i.beer.medal ? `<span class="combo-medal">${medalStar(i.beer, 18)} Medalla de ${i.beer.medal.label}</span>` : ''}
+          </div>`).join('')}
+        </div>
+      </div>
+      <div class="beer-buy combo-buy">
+        ${saved > 0 ? `<div class="combo-was">${money(regular)}</div>` : ''}
+        <div class="combo-price">${money(COMBO.price)}</div>
+        ${saved > 0 ? `<div class="combo-save">Ahorras ${money(saved)}</div>` : ''}
+        ${out
+          ? `<div class="soon-label">Agotado</div>`
+          : `<a class="btn" id="combo-order" target="_blank" rel="noopener noreferrer">Pedir combo por WhatsApp</a>`}
+        <div class="combo-until">Válido hasta el ${COMBO.validUntil}</div>
+      </div>
+    </div>
+  </div>`;
+}
+
 /* ---------- render beer cards ---------- */
-document.getElementById('grid').innerHTML = BEERS.map(b => `
+document.getElementById('grid').innerHTML = comboHTML() + BEERS.map(b => `
   <div class="card beer${b.soldOut ? ' sold-out' : ''}">
     <div class="beer-top" data-open="${b.id}">
       ${wave(b.color)}
@@ -118,7 +165,14 @@ function deliveryBlock(){
     : `Entrega: Domicilio (el precio puede variar según la dirección)\nNombre: \nDirección de entrega: `;
 }
 
-document.querySelectorAll('input[name="delivery"]').forEach(r => r.onchange = render);
+function updateComboLink(){
+  const a = document.getElementById('combo-order');
+  if(!a) return;
+  const items = comboBeers().map(i => `${i.qty} × ${i.beer.name}`).join(' + ');
+  a.href = whatsappLink(`Hola! Quiero pedir el ${COMBO.name} (${items}) por ${money(COMBO.price)}.\n\n${deliveryBlock()}`);
+}
+updateComboLink();
+document.querySelectorAll('input[name="delivery"]').forEach(r => r.onchange = () => { render(); updateComboLink(); });
 
 function orderMessage(){
   const {rows, subtotal, saved} = priceCart();
