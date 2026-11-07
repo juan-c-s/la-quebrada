@@ -60,7 +60,8 @@ const BEERS = [
     description:'Puro néctar, siempre en vuelo. Cuerpo ligero, con notas de banano y clavo al fondo. Turbia por naturaleza, fácil de tomar.',
     ingredients:['Malta de Cebada, Malta de Trigo','Lúpulos Hallertau Tradition, Centennial','Levadura Ale'],
     pairing:['Pescado','Ensalada','Ceviche'],
-    tag:'Disponible',
+    tag:'Agotado',
+    soldOut:true,
     prices:{unit:13000, four:46000}
   },
   {
@@ -68,12 +69,13 @@ const BEERS = [
     name:'Tucán',
     latin:'Ramphastos ambiguus',
     style:'Hazy Mango IPA',
-    color:'#F0B429',
+    color:'#F2A02A',
     abv:'8.3%', ibu:'45', ebc:'10',
     description:'Amarilla como su pico y el mango que disfruta. Lúpulo tropical protagonista, con una nota de pulpa real de mango. Turbia, jugosa, sin concesiones.',
     ingredients:['Malta de Cebada','Lúpulos Lotus, El Dorado','Levadura Ale','Pulpa de Mango'],
     pairing:['Cerdo','Hamburguesas','Papas Fritas'],
-    tag:'Disponible',
+    tag:'Agotado',
+    soldOut:true,
     prices:{unit:14000, four:50000}
   },
   {
@@ -87,7 +89,8 @@ const BEERS = [
     description:'Como la salamandra, naranja e imposible de ignorar. Cítrico y pino fragante anuncian una amargura limpia y directa, sostenida por malta y caramelo.',
     ingredients:['Malta de Cebada','Lúpulos Apollo, Centennial','Levadura Ale'],
     pairing:['Fritos','Pizza','Chocolate'],
-    tag:'Disponible',
+    tag:'Agotado',
+    soldOut:true,
     prices:{unit:13000, four:46000}
   },
   {
